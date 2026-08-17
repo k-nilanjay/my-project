@@ -1,0 +1,12 @@
+[2026-08-15 00:19:57] INFO     [Pipeline] Project root : C:\Users\Hement Kitukale\Desktop\Resume project
+[2026-08-15 00:19:57] INFO     [Pipeline] Python       : C:\Users\Hement Kitukale\Desktop\Resume project\.venv\Scripts\python.exe
+[2026-08-15 00:19:57] INFO     [Pipeline] Mode         : EXECUTE
+[2026-08-15 00:19:57] INFO     [Pipeline] Extended     : NO (core 3 stages)
+[2026-08-15 00:19:57] INFO     [Pipeline] Log file     : C:\Users\Hement Kitukale\Desktop\Resume project\logs\pipeline_20260815_001957.log
+[2026-08-15 00:19:57] WARNING  [Pipeline] --skip-generation: Stage 1 (data generation) will be skipped.
+[2026-08-15 00:19:57] WARNING  [Pipeline] Skipping Stage 1: Data Generation
+[2026-08-15 00:19:57] INFO     [Stage 2] CSV → SQLite: schema init + INSERT sensor_readings & failure_log
+[2026-08-15 00:19:57] INFO     [Stage 2] Script: ingest.py
+[2026-08-15 00:19:57] INFO     [Stage 2] Starting subprocess...
+[2026-08-15 00:19:58] ERROR    [Stage 2] Stage FAILED (exit code 1) in 1.3s
+[2026-08-15 00:19:58] ERROR    [Pipeline] Pipeline ABORTED at Stage 2. Fix the error above and re-run. Use --skip-generation / --skip-ingestion to resume from an intermediate stage.

@@ -1,0 +1,29 @@
+[2026-08-15 15:04:37] INFO     [Pipeline] Project root : C:\Users\Hement Kitukale\Desktop\Resume project
+[2026-08-15 15:04:37] INFO     [Pipeline] Python       : C:\Users\Hement Kitukale\Desktop\Resume project\.venv\Scripts\python.exe
+[2026-08-15 15:04:37] INFO     [Pipeline] Mode         : EXECUTE
+[2026-08-15 15:04:37] INFO     [Pipeline] Extended     : NO (core 3 stages)
+[2026-08-15 15:04:37] INFO     [Pipeline] Log file     : C:\Users\Hement Kitukale\Desktop\Resume project\logs\pipeline_20260815_150437.log
+[2026-08-15 15:04:37] INFO     [Stage 1] Weibull/Arrhenius multi-failure simulation → CSV output
+[2026-08-15 15:04:37] INFO     [Stage 1] Script: data_generator.py
+[2026-08-15 15:04:37] INFO     [Stage 1] Starting subprocess...
+[2026-08-15 15:04:41] INFO     [Stage 1] [OK] Output verified: multi_failure_telemetry.csv
+[2026-08-15 15:04:41] INFO     [Stage 1] [OK] Output verified: ttf_samples.csv
+[2026-08-15 15:04:41] INFO     [Stage 1] [OK] Stage complete in 4.7s
+[2026-08-15 15:04:41] INFO     [Stage 2] CSV → SQLite: schema init + INSERT sensor_readings & failure_log
+[2026-08-15 15:04:41] INFO     [Stage 2] Script: ingest.py
+[2026-08-15 15:04:41] INFO     [Stage 2] Starting subprocess...
+[2026-08-15 15:04:48] INFO     [Stage 2] [OK] Output verified: manufacturing.db
+[2026-08-15 15:04:48] INFO     [Stage 2] [OK] Stage complete in 6.3s
+[2026-08-15 15:04:48] INFO     [Stage 3a] Descriptive stats (mean, std, skewness, Shapiro-Wilk) for sensors/production/downtime
+[2026-08-15 15:04:48] INFO     [Stage 3a] Script: eda_summary_stats.py
+[2026-08-15 15:04:48] INFO     [Stage 3a] Starting subprocess...
+[2026-08-15 15:04:49] INFO     [Stage 3a] [OK] Output verified: eda_sensor_stats.csv
+[2026-08-15 15:04:49] INFO     [Stage 3a] [OK] Output verified: eda_production_stats.csv
+[2026-08-15 15:04:49] INFO     [Stage 3a] [OK] Output verified: eda_downtime_stats.csv
+[2026-08-15 15:04:49] INFO     [Stage 3a] [OK] Output verified: eda_full_report.txt
+[2026-08-15 15:04:49] INFO     [Stage 3a] [OK] Stage complete in 1.7s
+[2026-08-15 15:04:49] INFO     [Stage 3b] Rolling averages, OEE seasonality by shift, downtime vs failure timeline
+[2026-08-15 15:04:49] INFO     [Stage 3b] Script: eda_trends.py
+[2026-08-15 15:04:49] INFO     [Stage 3b] Starting subprocess...
+[2026-08-15 15:04:52] ERROR    [Stage 3b] Stage FAILED (exit code 1) in 2.3s
+[2026-08-15 15:04:52] ERROR    [Pipeline] Pipeline ABORTED at Stage 3b. Fix the error above and re-run. Use --skip-generation / --skip-ingestion to resume from an intermediate stage.

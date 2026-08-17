@@ -1,0 +1,567 @@
+{
+  "name": "ManufacturingDigitalTwin_IndustrialTheme",
+  "version": "1.0.0",
+  "_comment": "Day 24 deliverable. Based on visual_design_blueprint.md (Day 23). Implements the industrial color palette, accessibility rules, and default visual configurations for the 3-page Fleet Analytics dashboard.",
+
+  "dataColors": [
+    "#1565C0",
+    "#6A1B9A",
+    "#00695C",
+    "#E65100",
+    "#37474F",
+    "#455A64",
+    "#283593",
+    "#4A148C",
+    "#004D40",
+    "#BF360C"
+  ],
+
+  "background": "#F5F5F5",
+  "foreground": "#212121",
+  "tableAccent": "#1565C0",
+
+  "good": "#2E7D32",
+  "neutral": "#F57F17",
+  "bad": "#C62828",
+  "maximum": "#2E7D32",
+  "center": "#F57F17",
+  "minimum": "#C62828",
+  "null": "#9E9E9E",
+
+  "textClasses": {
+    "callout": {
+      "fontSize": 40,
+      "color": "#212121",
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    },
+    "title": {
+      "fontSize": 16,
+      "color": "#212121",
+      "fontFace": "Segoe UI",
+      "fontWeight": "semibold"
+    },
+    "header": {
+      "fontSize": 13,
+      "color": "#212121",
+      "fontFace": "Segoe UI",
+      "fontWeight": "semibold"
+    },
+    "label": {
+      "fontSize": 11,
+      "color": "#424242",
+      "fontFace": "Segoe UI",
+      "fontWeight": "normal"
+    },
+    "legend": {
+      "fontSize": 10,
+      "color": "#424242",
+      "fontFace": "Segoe UI"
+    },
+    "smallLabel": {
+      "fontSize": 9,
+      "color": "#616161",
+      "fontFace": "Segoe UI"
+    }
+  },
+
+  "visualStyles": {
+
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontSize": 13,
+            "fontColor": { "solid": { "color": "#212121" } },
+            "background": { "solid": { "color": "#FFFFFF" } },
+            "fontFamily": "Segoe UI",
+            "bold": true,
+            "show": true
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E0E0E0" } },
+            "radius": 4
+          }
+        ],
+        "general": [
+          {
+            "responsive": true,
+            "keepLayerOrder": true
+          }
+        ]
+      }
+    },
+
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#212121" } },
+            "fontFamily": "Segoe UI",
+            "fontSize": 32,
+            "bold": true,
+            "wordWrap": false
+          }
+        ],
+        "categoryLabels": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#424242" } },
+            "fontFamily": "Segoe UI",
+            "fontSize": 11
+          }
+        ],
+        "title": [
+          {
+            "fontSize": 12,
+            "fontColor": { "solid": { "color": "#212121" } },
+            "fontFamily": "Segoe UI",
+            "bold": true
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E0E0E0" } },
+            "radius": 6
+          }
+        ],
+        "_comment_conditional_formatting": "Apply conditional backgrounds via Power BI Rules: OEE >= 0.85 -> #00695C (World Class Teal); 0.75-0.85 -> #2E7D32 (Green); 0.65-0.75 -> #F57F17 (Amber); < 0.65 -> #C62828 (Red). Health Score >= 75 -> #2E7D32; 65-75 -> #F57F17; < 65 -> #C62828."
+      }
+    },
+
+    "lineChart": {
+      "*": {
+        "lineStyles": [
+          {
+            "strokeWidth": 2,
+            "showMarker": false,
+            "markerSize": 5
+          }
+        ],
+        "dataPoint": [
+          {
+            "_comment": "5-component series palette. Position 1=Bearing #1565C0, 2=Shaft #6A1B9A, 3=Motor Housing #00695C, 4=Coupling #E65100, 5=Gearbox #37474F. Applied via dataColors array above."
+          }
+        ],
+        "trend": [
+          {
+            "show": false
+          }
+        ],
+        "xAxis": [
+          {
+            "show": true,
+            "fontSize": 10,
+            "fontColor": { "solid": { "color": "#616161" } },
+            "gridlineShow": false,
+            "titleFontSize": 11,
+            "titleColor": { "solid": { "color": "#424242" } }
+          }
+        ],
+        "yAxis": [
+          {
+            "show": true,
+            "fontSize": 10,
+            "fontColor": { "solid": { "color": "#616161" } },
+            "gridlineShow": true,
+            "gridlineColor": { "solid": { "color": "#F0F0F0" } },
+            "gridlineWidth": 1,
+            "titleFontSize": 11,
+            "titleColor": { "solid": { "color": "#424242" } }
+          }
+        ],
+        "legend": [
+          {
+            "show": true,
+            "position": "Bottom",
+            "fontSize": 10,
+            "fontColor": { "solid": { "color": "#424242" } }
+          }
+        ]
+      }
+    },
+
+    "barChart": {
+      "*": {
+        "dataPoint": [
+          {
+            "_comment": "CCI Tier conditional coloring applied via Rules in Power BI Desktop: Critical -> #C62828, High -> #F57F17, Moderate -> #FFC107, Low -> #2E7D32. Default bar color from dataColors[0] = #1565C0."
+          }
+        ],
+        "dataLabels": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#212121" } },
+            "fontSize": 10,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "categoryAxis": [
+          {
+            "show": true,
+            "fontSize": 10,
+            "fontColor": { "solid": { "color": "#424242" } },
+            "gridlineShow": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "show": true,
+            "fontSize": 10,
+            "gridlineShow": true,
+            "gridlineColor": { "solid": { "color": "#F0F0F0" } }
+          }
+        ],
+        "legend": [
+          {
+            "show": true,
+            "position": "Bottom",
+            "fontSize": 10
+          }
+        ]
+      }
+    },
+
+    "clusteredBarChart": {
+      "*": {
+        "_comment": "Used for OEE A/P/Q (B-04, B-05, B-06) by shift_month. Series colors: Availability -> #1565C0, Performance -> #6A1B9A, Quality -> #00695C.",
+        "dataLabels": [
+          {
+            "show": false
+          }
+        ],
+        "legend": [
+          {
+            "show": true,
+            "position": "Bottom",
+            "fontSize": 10
+          }
+        ]
+      }
+    },
+
+    "stackedBarChart": {
+      "*": {
+        "_comment": "Used for Alarm+Danger breaches (A-07+A-08) by pipeline_label. Stack: Alarm -> #F57F17, Danger -> #C62828.",
+        "dataColors": [
+          "#F57F17",
+          "#C62828"
+        ],
+        "dataLabels": [
+          {
+            "show": true,
+            "fontSize": 10
+          }
+        ]
+      }
+    },
+
+    "waterfallChart": {
+      "*": {
+        "_comment": "Used for Six Big Losses decomposition (B-09, B-10, B-11). Breakdown/decrease bars -> #C62828 (Danger Red). Total bar -> #1565C0 (Deep Blue).",
+        "sentimentColors": [
+          {
+            "totalFill": { "solid": { "color": "#1565C0" } },
+            "increaseFill": { "solid": { "color": "#2E7D32" } },
+            "decreaseFill": { "solid": { "color": "#C62828" } },
+            "otherFill": { "solid": { "color": "#9E9E9E" } }
+          }
+        ],
+        "dataLabels": [
+          {
+            "show": true,
+            "fontSize": 10,
+            "labelPosition": "insideEnd"
+          }
+        ]
+      }
+    },
+
+    "matrix": {
+      "*": {
+        "_comment": "Used for CCI Rank (D-02), CCI Tier (D-06), SRS (D-03), TBR (D-05) on Page 3, and dim_failure_log on Page 3 Panel E. Conditional cell coloring applied via Rules in Power BI Desktop.",
+        "grid": [
+          {
+            "gridVertical": true,
+            "gridVerticalColor": { "solid": { "color": "#E0E0E0" } },
+            "gridHorizontal": true,
+            "gridHorizontalColor": { "solid": { "color": "#E0E0E0" } },
+            "rowPadding": 4,
+            "fontFamily": "Segoe UI",
+            "fontSize": 10,
+            "textSize": 10
+          }
+        ],
+        "columnHeaders": [
+          {
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "backColor": { "solid": { "color": "#1565C0" } },
+            "fontSize": 11,
+            "bold": true,
+            "fontFamily": "Segoe UI",
+            "alignment": "center"
+          }
+        ],
+        "rowHeaders": [
+          {
+            "fontColor": { "solid": { "color": "#212121" } },
+            "backColor": { "solid": { "color": "#F5F5F5" } },
+            "fontSize": 10,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "values": [
+          {
+            "fontColor": { "solid": { "color": "#212121" } },
+            "backColor": { "solid": { "color": "#FFFFFF" } },
+            "fontSize": 10,
+            "fontFamily": "Segoe UI"
+          }
+        ]
+      }
+    },
+
+    "slicer": {
+      "*": {
+        "_comment": "Slicers: Date range (All pages), Component (P1/P2), Severity+CCI Tier (P3). Sync date slicer across all 3 pages via View > Sync Slicers.",
+        "selection": [
+          {
+            "selectAllCheckboxEnabled": true,
+            "singleSelect": false
+          }
+        ],
+        "header": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#212121" } },
+            "background": { "solid": { "color": "#F5F5F5" } },
+            "bold": true,
+            "fontSize": 11,
+            "fontFamily": "Segoe UI",
+            "outline": "Bottom"
+          }
+        ],
+        "items": [
+          {
+            "fontColor": { "solid": { "color": "#424242" } },
+            "background": { "solid": { "color": "#FFFFFF" } },
+            "fontSize": 10,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E0E0E0" } },
+            "radius": 4
+          }
+        ]
+      }
+    },
+
+    "button": {
+      "*": {
+        "_comment": "Drill-through buttons and Back button. Used for: P1 Panel B drill-through target, P3 Panel A/B drill-through target, P2 Back button.",
+        "fill": [
+          {
+            "show": true,
+            "fillColor": { "solid": { "color": "#1565C0" } },
+            "transparency": 0
+          }
+        ],
+        "text": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#FFFFFF" } },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI",
+            "bold": true,
+            "alignment": "center"
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#0D47A1" } },
+            "radius": 4
+          }
+        ]
+      }
+    }
+  },
+
+  "_palette_reference": {
+    "_doc": "Complete color reference for manual application in Power BI Desktop Rules / Conditional Formatting dialogs.",
+    "status_colors": {
+      "danger_red": "#C62828",
+      "alert_amber": "#F57F17",
+      "acceptable_green": "#2E7D32",
+      "world_class_teal": "#00695C"
+    },
+    "cci_tier_colors": {
+      "Critical": "#C62828",
+      "High": "#F57F17",
+      "Moderate": "#FFC107",
+      "Low": "#2E7D32"
+    },
+    "component_series_palette": {
+      "Bearing_pos1": "#1565C0",
+      "Shaft_pos2": "#6A1B9A",
+      "MotorHousing_pos3": "#00695C",
+      "Coupling_pos4": "#E65100",
+      "Gearbox_pos5": "#37474F"
+    },
+    "oee_apq_series": {
+      "Availability_B04": "#1565C0",
+      "Performance_B06": "#6A1B9A",
+      "Quality_B05": "#00695C"
+    },
+    "alarm_severity_series": {
+      "Alarm_A07": "#F57F17",
+      "Danger_A08": "#C62828"
+    },
+    "waterfall_colors": {
+      "total_bar": "#1565C0",
+      "increase_bar": "#2E7D32",
+      "decrease_bar": "#C62828"
+    },
+    "accessibility_notes": [
+      "Red (#C62828) and Green (#2E7D32) are RESERVED for status encoding only -- NOT used as component series colors.",
+      "5-component palette passes WCAG AA contrast at font size >= 10pt on white background.",
+      "Colorblind-safe: Blue/Purple/Teal/Orange/Slate distinguishable under Deuteranopia and Protanopia simulation.",
+      "All data label text uses #212121 (near-black) on white/light backgrounds for maximum contrast."
+    ]
+  },
+
+  "_reference_lines": {
+    "_doc": "Reference lines to configure manually in Power BI Desktop. JSON theme cannot inject analytics lines.",
+    "health_score_line_chart_P1_PanelA": [
+      { "value": 75, "label": "Acceptable Threshold", "color": "#F57F17", "style": "dashed" },
+      { "value": 65, "label": "Danger Threshold", "color": "#C62828", "style": "dashed" }
+    ],
+    "mtbf_line_chart_P2_PanelA": [
+      { "value": "SELECTEDVALUE(dim_criticality[weibull_mtbf_hours])", "label": "Weibull Predicted MTBF", "color": "#6A1B9A", "style": "dotted" }
+    ],
+    "mtbf_delta_diverging_bar_P2_PanelD": [
+      { "value": 0, "label": "Weibull Baseline", "color": "#37474F", "style": "solid" }
+    ]
+  },
+
+  "_slicer_sync_configuration": {
+    "_doc": "Sync Slicers configuration for View > Sync Slicers panel in Power BI Desktop.",
+    "date_range_slicer": {
+      "pages": ["Page1_FleetOverview", "Page2_ComponentHealth", "Page3_AlertRiskIntelligence"],
+      "sync": true,
+      "visible": true,
+      "default_filter": "2027-06-20 to 2027-07-20",
+      "P3_override": "Page 3 shows 2027-07-13 to 2027-07-20 by default but syncs when user changes date on any page."
+    },
+    "component_slicer": {
+      "pages": ["Page1_FleetOverview", "Page2_ComponentHealth"],
+      "sync": true,
+      "visible_on": ["Page1_FleetOverview"],
+      "hidden_on": ["Page2_ComponentHealth"],
+      "default_filter": "All",
+      "note": "Page 2 component is fixed by drill-through context. Slicer hidden on P2 to prevent override."
+    },
+    "cci_tier_slicer": {
+      "pages": ["Page3_AlertRiskIntelligence"],
+      "sync": false,
+      "default_filter": "All"
+    },
+    "severity_slicer": {
+      "pages": ["Page3_AlertRiskIntelligence"],
+      "sync": false,
+      "default_filter": "All"
+    },
+    "shift_period_slicer": {
+      "pages": ["Page2_ComponentHealth"],
+      "sync": false,
+      "default_filter": "All"
+    },
+    "downtime_category_slicer": {
+      "pages": ["Page3_AlertRiskIntelligence"],
+      "sync": false,
+      "default_filter": "All"
+    }
+  },
+
+  "_kpi_card_conditional_formatting_rules": {
+    "_doc": "Rules for Format > Data colors > Conditional formatting on KPI card callout value backgrounds.",
+    "B15_System_OEE": {
+      "measure": "[System OEE Composite]",
+      "rules": [
+        { "condition": ">= 0.85", "background": "#00695C", "font_color": "#FFFFFF", "label": "World Class" },
+        { "condition": ">= 0.75", "background": "#2E7D32", "font_color": "#FFFFFF", "label": "Green" },
+        { "condition": ">= 0.65", "background": "#F57F17", "font_color": "#FFFFFF", "label": "Amber" },
+        { "condition": "< 0.65",  "background": "#C62828", "font_color": "#FFFFFF", "label": "Red" }
+      ]
+    },
+    "A02_Min_Health_Score": {
+      "measure": "[Min Health Score]",
+      "rules": [
+        { "condition": ">= 75", "background": "#2E7D32", "font_color": "#FFFFFF", "label": "Healthy" },
+        { "condition": ">= 65", "background": "#F57F17", "font_color": "#FFFFFF", "label": "Alert" },
+        { "condition": "< 65",  "background": "#C62828", "font_color": "#FFFFFF", "label": "Danger" }
+      ]
+    },
+    "D06_CCI_Tier_Worst": {
+      "measure": "[CCI Tier Worst]",
+      "rules": [
+        { "condition": "= 'Critical'", "background": "#C62828", "font_color": "#FFFFFF" },
+        { "condition": "= 'High'",     "background": "#F57F17", "font_color": "#FFFFFF" },
+        { "condition": "= 'Moderate'",   "background": "#FFC107", "font_color": "#212121" },
+        { "condition": "= 'Low'",      "background": "#2E7D32", "font_color": "#FFFFFF" }
+      ]
+    },
+    "A11_Combined_Alerts": {
+      "measure": "[Combined Alerts]",
+      "rules": [
+        { "condition": "= 'Critical'", "background": "#C62828", "font_color": "#FFFFFF", "label": "Red" },
+        { "condition": "= 'Warning'", "background": "#F57F17", "font_color": "#FFFFFF", "label": "Amber" },
+        { "condition": "= 'Caution'", "background": "#FFC107", "font_color": "#212121", "label": "Yellow" },
+        { "condition": "= 'Normal'", "background": "#2E7D32", "font_color": "#FFFFFF", "label": "Green" }
+      ]
+    },
+    "A08_Danger_Zone_Count": {
+      "measure": "[Danger Zone Count]",
+      "rules": [
+        { "condition": "> 0", "background": "#C62828", "font_color": "#FFFFFF", "label": "Red" },
+        { "condition": "= 0", "background": "#2E7D32", "font_color": "#FFFFFF", "label": "Green" }
+      ]
+    },
+    "A07_Alarm_Breach_Count": {
+      "measure": "[Alarm Breach Count]",
+      "rules": [
+        { "condition": "> 5", "background": "#F57F17", "font_color": "#FFFFFF", "label": "Amber" },
+        { "condition": "> 0", "background": "#FFC107", "font_color": "#212121", "label": "Yellow" },
+        { "condition": "= 0", "background": "#2E7D32", "font_color": "#FFFFFF", "label": "Green" }
+      ]
+    }
+  }
+}

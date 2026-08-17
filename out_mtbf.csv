@@ -1,0 +1,5 @@
+component_id,component_name,strategy,beta_mid,ea_ev,n_failures,mtbf_empirical_h,stddev_ttf_h,cov_ttf,eta_nominal_h,eta_effective_h,arrhenius_af,mtbf_weibull_derated_h,mtbf_weibull_nominal_h,empirical_vs_weibull_ratio
+1,Bearing,PM,3.0,0.65,4,1949.7,360.3,0.1848,4380.0,2350.4,1.8635,2098.9,3911.3,0.9289
+3,"Motor Housing",CBM,2.15,0.85,5,1679.7,763.6,0.4546,8000.0,2230.5,3.5866,1975.4,7084.9,0.8503
+4,Coupling,CBM,1.75,0.6,1,1289.5,0.0,0.0,5256.0,5256.0,1.0,4681.1,4681.1,0.2755
+5,Gearbox,PM_CBM,2.5,0.7,5,1533.6,577.5,0.3766,4380.0,1670.7,2.6216,1482.4,3886.2,1.0346

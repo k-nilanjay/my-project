@@ -1,0 +1,38 @@
+[2026-08-15 00:20:20] INFO     [Pipeline] Project root : C:\Users\Hement Kitukale\Desktop\Resume project
+[2026-08-15 00:20:20] INFO     [Pipeline] Python       : C:\Users\Hement Kitukale\Desktop\Resume project\.venv\Scripts\python.exe
+[2026-08-15 00:20:20] INFO     [Pipeline] Mode         : EXECUTE
+[2026-08-15 00:20:20] INFO     [Pipeline] Extended     : NO (core 3 stages)
+[2026-08-15 00:20:20] INFO     [Pipeline] Log file     : C:\Users\Hement Kitukale\Desktop\Resume project\logs\pipeline_20260815_002020.log
+[2026-08-15 00:20:20] WARNING  [Pipeline] --skip-generation: Stage 1 (data generation) will be skipped.
+[2026-08-15 00:20:20] WARNING  [Pipeline] --skip-ingestion:  Stage 2 (SQLite ingestion) will be skipped.
+[2026-08-15 00:20:20] WARNING  [Pipeline] Skipping Stage 1: Data Generation
+[2026-08-15 00:20:20] WARNING  [Pipeline] Skipping Stage 2: SQLite Ingestion
+[2026-08-15 00:20:20] INFO     [Stage 3a] Descriptive stats (mean, std, skewness, Shapiro-Wilk) for sensors/production/downtime
+[2026-08-15 00:20:20] INFO     [Stage 3a] Script: eda_summary_stats.py
+[2026-08-15 00:20:20] INFO     [Stage 3a] Starting subprocess...
+[2026-08-15 00:20:21] INFO     [Stage 3a] [OK] Output verified: eda_sensor_stats.csv
+[2026-08-15 00:20:21] INFO     [Stage 3a] [OK] Output verified: eda_production_stats.csv
+[2026-08-15 00:20:21] INFO     [Stage 3a] [OK] Output verified: eda_downtime_stats.csv
+[2026-08-15 00:20:21] INFO     [Stage 3a] [OK] Output verified: eda_full_report.txt
+[2026-08-15 00:20:21] INFO     [Stage 3a] [OK] Stage complete in 1.9s
+[2026-08-15 00:20:21] INFO     [Stage 3b] Rolling averages, OEE seasonality by shift, downtime vs failure timeline
+[2026-08-15 00:20:21] INFO     [Stage 3b] Script: eda_trends.py
+[2026-08-15 00:20:21] INFO     [Stage 3b] Starting subprocess...
+[2026-08-15 00:20:26] INFO     [Stage 3b] [OK] Output verified: rolling_avg_sensor_trends.png
+[2026-08-15 00:20:26] INFO     [Stage 3b] [OK] Output verified: shift_oee_seasonality.png
+[2026-08-15 00:20:26] INFO     [Stage 3b] [OK] Output verified: downtime_vs_failures_stacked.png
+[2026-08-15 00:20:26] INFO     [Stage 3b] [OK] Stage complete in 4.5s
+[2026-08-15 00:20:26] INFO     [Stage 3c] Pearson/Spearman matrices (sensor pivot, within-component, production KPIs)
+[2026-08-15 00:20:26] INFO     [Stage 3c] Script: eda_correlation.py
+[2026-08-15 00:20:26] INFO     [Stage 3c] Starting subprocess...
+[2026-08-15 00:20:28] INFO     [Stage 3c] [OK] Output verified: corr_sensor_pivot_pearson.csv
+[2026-08-15 00:20:28] INFO     [Stage 3c] [OK] Output verified: corr_within_component_pearson.csv
+[2026-08-15 00:20:28] INFO     [Stage 3c] [OK] Stage complete in 2.2s
+[2026-08-15 00:20:28] WARNING  [Pipeline] UNDERSIZE: multi_failure_telemetry.csv  (3,965 rows, expected >= 40,000)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] manufacturing.db  (7.5 MB)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] eda_sensor_stats.csv  (44 rows)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] eda_full_report.txt  (82,841 bytes)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] corr_sensor_pivot_pearson.csv  (1,361 bytes)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] DB table 'sensor_readings': 48,751 rows (threshold >= 47,000)
+[2026-08-15 00:20:28] INFO     [Pipeline] [OK] DB table 'failure_log': 15 rows (threshold >= 15)
+[2026-08-15 00:20:28] INFO     [Pipeline] Full log written to: C:\Users\Hement Kitukale\Desktop\Resume project\logs\pipeline_20260815_002020.log

@@ -1,0 +1,16 @@
+[2026-08-15 00:19:25] INFO     [Pipeline] Project root : C:\Users\Hement Kitukale\Desktop\Resume project
+[2026-08-15 00:19:25] INFO     [Pipeline] Python       : C:\Users\Hement Kitukale\Desktop\Resume project\.venv\Scripts\python.exe
+[2026-08-15 00:19:25] INFO     [Pipeline] Mode         : EXECUTE
+[2026-08-15 00:19:25] INFO     [Pipeline] Extended     : NO (core 3 stages)
+[2026-08-15 00:19:25] INFO     [Pipeline] Log file     : C:\Users\Hement Kitukale\Desktop\Resume project\logs\pipeline_20260815_001925.log
+[2026-08-15 00:19:25] INFO     [Stage 1] Weibull/Arrhenius multi-failure simulation → CSV output
+[2026-08-15 00:19:25] INFO     [Stage 1] Script: data_generator.py
+[2026-08-15 00:19:25] INFO     [Stage 1] Starting subprocess...
+[2026-08-15 00:19:37] INFO     [Stage 1] [OK] Output verified: multi_failure_telemetry.csv
+[2026-08-15 00:19:37] INFO     [Stage 1] [OK] Output verified: ttf_samples.csv
+[2026-08-15 00:19:37] INFO     [Stage 1] [OK] Stage complete in 12.4s
+[2026-08-15 00:19:37] INFO     [Stage 2] CSV → SQLite: schema init + INSERT sensor_readings & failure_log
+[2026-08-15 00:19:37] INFO     [Stage 2] Script: ingest.py
+[2026-08-15 00:19:37] INFO     [Stage 2] Starting subprocess...
+[2026-08-15 00:19:38] ERROR    [Stage 2] Stage FAILED (exit code 1) in 0.7s
+[2026-08-15 00:19:38] ERROR    [Pipeline] Pipeline ABORTED at Stage 2. Fix the error above and re-run. Use --skip-generation / --skip-ingestion to resume from an intermediate stage.

@@ -1,0 +1,164 @@
+
+--- python/reliability.py ---
+
+Pattern: MTBF
+4: Weibull Reliability Functions, MTBF / MTTR, and Arrhenius Acceleration Model
+12: - MTBF from Weibull parameters (β, η) via the Gamma function
+36: MTBF (Mean Time Between Failures) — Weibull:
+37: MTBF = η · Γ(1 + 1/β)
+68: Table: failure_log (MTBF source)
+313: # 3. MTBF FROM WEIBULL PARAMETERS
+316: def mtbf_weibull(beta: float, eta: float) -> float:
+318: Calculate Mean Time Between Failures (MTBF) from Weibull parameters.
+322: MTBF = η · Γ(1 + 1/β)
+328: MTBF = ∫₀^∞ R(t) dt = ∫₀^∞ exp(-(t/η)^β) dt
+333: β = 1 (exponential model): Γ(2) = 1!, so MTBF = η · 1 = η = 1/λ.
+334: This recovers the familiar MTBF = 1/failure_rate identity.
+338: MTBF = 4380 × 0.893 ≈ 3912 hours ≈ 163 days
+358: float — MTBF in operating hours
+365: # 4. MTBF FROM HISTORICAL FAILURE DATA
+
+Pattern: MTTR
+4: Weibull Reliability Functions, MTBF / MTTR, and Arrhenius Acceleration Model
+13: - MTTR calculation from maintenance event records
+60: Table: maintenance_events (MTTR source)
+430: # 5. MTTR — MEAN TIME TO REPAIR
+433: def mttr_from_maintenance_records(
+438: Calculate Mean Time To Repair (MTTR) from maintenance event repair durations.
+442: MTTR = (Σ repair_duration_hours) / n_repairs
+444: MTTR vs MTBF — Maintenance Effectiveness Relationship
+446: Availability ≈ MTBF / (MTBF + MTTR)     [exponential approximation]
+455: Only repair events (unplanned failures) — true MTTR.
+471: MTTR encompasses: fault detection time + diagnosis time + parts procurement
+484: 'mttr_hours'        : float  — mean repair time in hours
+488: 'approx_availability': float — MTBF/(MTBF+MTTR) approximation placeholder
+498: mttr = total / n
+501: "mttr_hours":         round(mttr, 4),
+
+Pattern: Arrhenius
+4: Weibull Reliability Functions, MTBF / MTTR, and Arrhenius Acceleration Model
+14: - Arrhenius Acceleration Factor (AF) for temperature-stressed components
+40: Arrhenius Acceleration Factor:
+58: - activation_energy_ev  FLOAT   -- Ea for Arrhenius; NULL for Shaft
+74: Table: sensor_readings (Arrhenius temperature input)
+548: # 7. ARRHENIUS ACCELERATION FACTOR
+551: def arrhenius_acceleration_factor(
+557: Calculate the Arrhenius Acceleration Factor (AF) for thermally-driven failures.
+580: This is the Arrhenius "10-degree rule" used in electronics reliability (MIL-HDBK-217).
+650: acceleration_factor: float — Arrhenius AF from arrhenius_acceleration_factor()
+
+Pattern: OEE
+450: for the OEE engine (kpi.py), we use shift-level measured downtime directly.
+523: distributed. Used here as an analytical cross-check against the OEE
+527: Comparing A_weibull (this function) with A_oee (kpi.compute_availability())
+686: This mirrors the OEE Availability series rule: A_sys = min(A_i), which
+
+Pattern: Availability
+446: Availability ≈ MTBF / (MTBF + MTTR)     [exponential approximation]
+449: The exact availability depends on the full time distribution of repairs;
+488: 'approx_availability': float — MTBF/(MTBF+MTTR) approximation placeholder
+505: "approx_availability": None,   # caller must provide MTBF to compute this
+510: # 6. MTBF-MTTR AVAILABILITY BRIDGE
+513: def availability_from_mtbf_mttr(mtbf_hours: float, mttr_hours: float) -> float:
+515: Estimate steady-state Availability from MTBF and MTTR.
+524: Availability computed from shift-level downtime records (kpi.py).
+527: Comparing A_weibull (this function) with A_oee (kpi.compute_availability())
+538: float — estimated steady-state availability A ∈ [0.0, 1.0]
+686: This mirrors the OEE Availability series rule: A_sys = min(A_i), which
+851: #                 snapshot[comp_name]["availability_estimate"] = availability_from_mtbf_mttr(
+
+--- python/kpi.py ---
+
+Pattern: OEE
+4: OEE (Overall Equipment Effectiveness) Calculation Engine
+9: Translate the three OEE pillars — Availability, Performance, Quality — into
+18: OEE = Availability (A) x Performance (P) x Quality (Q)
+25: World-class OEE target = 85%+ (Nakajima, 1988)
+26: For a series system of 5 components, system OEE is constrained by the
+28: (a) per-component OEE  -> for drill-down diagnostics
+29: (b) system OEE         -> A_sys x P_sys x Q_sys  (series product rule)
+63: - rework_units          INTEGER  -- units requiring rework (counted as defective for OEE)
+85: - We track downtime at the component level but roll up to system level for OEE.
+112: # World-class OEE benchmark (Nakajima, 1988)
+113: OEE_WORLD_CLASS: float = 0.85
+115: # Minimum acceptable OEE before escalation alert
+116: OEE_ALERT_THRESHOLD: float = 0.65
+143: def validate_oee_component(value: float, label: str) -> float:
+145: Clamp an OEE sub-factor to [0.0, 1.0] and warn if out of range.
+
+Pattern: Availability
+9: Translate the three OEE pillars — Availability, Performance, Quality — into
+18: OEE = Availability (A) x Performance (P) x Quality (Q)
+88: in their individual availability but ARE visible in the system drill-down.
+151: label : str   -- 'Availability' | 'Performance' | 'Quality'
+165: # 1. AVAILABILITY
+168: def compute_availability(
+174: Calculate Availability for a single component over a single shift.
+204: EQUIVALENT SQL  (to be saved as sql/queries/oee_availability.sql)
+213: / NULLIF(ps.planned_duration_min, 0)                            AS availability
+229: float in [0.0, 1.0] -- Availability factor
+232: availability = safe_divide(run_time_min, planned_duration_min)
+233: return validate_oee_component(availability, "Availability")
+275: (run_time_min derived from Availability calculation above)
+407: availability: float,
+416: OEE = Availability x Performance x Quality
+
+Pattern: Performance
+9: Translate the three OEE pillars — Availability, Performance, Quality — into
+18: OEE = Availability (A) x Performance (P) x Quality (Q)
+68: Table: sensor_readings  (already in Day 1 schema -- referenced for Performance calc)
+151: label : str   -- 'Availability' | 'Performance' | 'Quality'
+237: # 2. PERFORMANCE
+240: def compute_performance(
+246: Calculate Performance (Speed Loss) for a single component over a shift.
+256: Performance < 1.0: the machine ran slower than its nameplate design speed.
+264: Performance > 1.0: machine ran faster than rated -- DATA ERROR, will be clamped.
+281: EQUIVALENT SQL  (to be saved as sql/queries/oee_performance.sql)
+290: / NULLIF(rt.run_time_min, 0)                 AS performance
+309: float in [0.0, 1.0] -- Performance factor
+312: performance = safe_divide(ideal_time_consumed, run_time_min)
+313: return validate_oee_component(performance, "Performance")
+316: def compute_performance_rpm(actual_rpm: float, rated_rpm: float) -> float:
+
+Pattern: Quality
+9: Translate the three OEE pillars — Availability, Performance, Quality — into
+18: OEE = Availability (A) x Performance (P) x Quality (Q)
+52: - downtime_type         VARCHAR  -- 'equipment' | 'process' | 'quality'
+61: - good_units            INTEGER  -- units passing quality inspection
+66: -- root-cause attribution for quality drill-down
+151: label : str   -- 'Availability' | 'Performance' | 'Quality'
+339: # 3. QUALITY
+342: def compute_quality(good_units: int, total_units: int) -> float:
+344: Calculate Quality (First-Pass Yield) for a single component over a shift.
+353: Rework is counted as a quality loss in OEE -- even if eventually salvaged,
+356: SERIES TOPOLOGY -- QUALITY PROPAGATION
+362: Quality attribution:
+366: - Root cause attribution enables the Power BI Quality drill-down.
+379: EQUIVALENT SQL  (to be saved as sql/queries/oee_quality.sql)
+386: pc.good_units / NULLIF(CAST(pc.total_units AS FLOAT), 0)   AS quality
+
+--- python/graph_centrality.py ---
+
+--- python/composite_criticality.py ---
+
+--- python/simulate.py ---
+
+Pattern: MTBF
+246: """Number of calendar days to simulate. Default 30 covers ~1 MTBF cycle
+
+Pattern: Arrhenius
+4: Sensor Data Generator: Weibull TTF Injection + Arrhenius Topology + Signal Degradation
+25: 2. ARRHENIUS TOPOLOGY LOGIC
+28: η derated by the Arrhenius Acceleration Factor when operating above nominal
+31: AF = exp[(Ea/k) · (1/T_use − 1/T_stress)]    [Arrhenius equation]
+38: topology.is_arrhenius_applicable("Shaft") returns False. The Shaft TTF is
+72: │    - Draw TTF from Weibull (with Arrhenius derating for η)    │
+101: AF                 FLOAT     — Arrhenius Acceleration Factor at this timestep
+108: Arrhenius AF:       AF   = exp[(Ea/k) · (1/T_use − 1/T_stress)]
+130: arrhenius_acceleration_factor,
+141: is_arrhenius_applicable,
+150: # Nominal operating temperatures (°C) per component — baseline for Arrhenius derating.
+153: # Any sensor reading above T_nominal triggers Arrhenius derating.
+156: "Shaft":         None,   # Arrhenius not applicable (fatigue dominant)
+264: # Operating temperature (used as T_use in Arrhenius derating)
+286: # Arrhenius stress scenario

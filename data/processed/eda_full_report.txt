@@ -1,0 +1,578 @@
+EDA FULL REPORT — Manufacturing & Industrial Analytics FYP
+Day 14 — Phase 1.4 Python EDA
+Database: data\manufacturing.db
+Percentiles computed: [5, 10, 25, 50, 75, 90, 95]
+
+
+========================================================================
+SENSOR READINGS — Descriptive Statistics
+========================================================================
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : value
+  n=47,998  missing=0
+  Mean=170.6832  Median=16.7556  StdDev=416.5576  Variance=173520.2250
+  Skewness=2.7990  ExKurtosis=5.9231  CV%=244.05
+  Min=0.3418  P05=1.0988  P25=8.1491  P50=16.7556  P75=76.2300  P95=1479.3015  Max=1498.1100
+  IQR=68.0809  Range=1497.7682
+  Shapiro-Wilk: W=0.3943  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly right-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : r_derated
+  n=47,998  missing=0
+  Mean=0.8690  Median=0.9735  StdDev=0.2087  Variance=0.0436
+  Skewness=-1.8059  ExKurtosis=2.1347  CV%=24.02
+  Min=0.1581  P05=0.3770  P25=0.8589  P50=0.9735  P75=0.9960  P95=0.9999  Max=1.0000
+  IQR=0.1371  Range=0.8419
+  Shapiro-Wilk: W=0.6730  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : arrhenius_factor
+  n=47,998  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : health_score
+  n=47,998  missing=0
+  Mean=86.9038  Median=97.3500  StdDev=20.8742  Variance=435.7309
+  Skewness=-1.8059  ExKurtosis=2.1347  CV%=24.02
+  Min=15.8100  P05=37.6985  P25=85.8900  P50=97.3500  P75=99.6000  P95=99.9900  Max=100.0000
+  IQR=13.7100  Range=84.1900
+  Shapiro-Wilk: W=0.6730  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=load
+  Variable : value
+  n=4,375  missing=0
+  Mean=76.3207  Median=75.3500  StdDev=3.1936  Variance=10.1989
+  Skewness=2.0833  ExKurtosis=4.0869  CV%=4.18
+  Min=70.7800  P05=73.4500  P25=74.5300  P50=75.3500  P75=76.5200  P95=84.6630  Max=91.1600
+  IQR=1.9900  Range=20.3800
+  Shapiro-Wilk: W=0.7451  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly right-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=load
+  Variable : r_derated
+  n=4,375  missing=0
+  Mean=0.6424  Median=0.6748  StdDev=0.2884  Variance=0.0832
+  Skewness=-0.2226  ExKurtosis=-1.4527  CV%=44.90
+  Min=0.1581  P05=0.1902  P25=0.3660  P50=0.6748  P75=0.9380  P95=0.9962  Max=1.0000
+  IQR=0.5719  Range=0.8419
+  Shapiro-Wilk: W=0.8926  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=load
+  Variable : arrhenius_factor
+  n=4,375  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=load
+  Variable : health_score
+  n=4,375  missing=0
+  Mean=64.2409  Median=67.4800  StdDev=28.8417  Variance=831.8463
+  Skewness=-0.2226  ExKurtosis=-1.4527  CV%=44.90
+  Min=15.8100  P05=19.0240  P25=36.6050  P50=67.4800  P75=93.8000  P95=99.6200  Max=100.0000
+  IQR=57.1950  Range=84.1900
+  Shapiro-Wilk: W=0.8926  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=oil_debris
+  Variable : value
+  n=4,354  missing=0
+  Mean=14.3038  Median=11.5270  StdDev=7.4055  Variance=54.8416
+  Skewness=2.7892  ExKurtosis=7.5894  CV%=51.77
+  Min=8.3674  P05=10.1188  P25=10.6715  P50=11.5270  P75=13.3103  P95=32.6475  Max=52.4222
+  IQR=2.6387  Range=44.0548
+  Shapiro-Wilk: W=0.5732  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly right-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=oil_debris
+  Variable : r_derated
+  n=4,354  missing=0
+  Mean=0.9709  Median=0.9885  StdDev=0.0393  Variance=0.0015
+  Skewness=-1.7076  ExKurtosis=2.0703  CV%=4.04
+  Min=0.8298  P05=0.8754  P25=0.9610  P50=0.9885  P75=0.9980  P95=1.0000  Max=1.0000
+  IQR=0.0370  Range=0.1702
+  Shapiro-Wilk: W=0.7411  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=oil_debris
+  Variable : arrhenius_factor
+  n=4,354  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=oil_debris
+  Variable : health_score
+  n=4,354  missing=0
+  Mean=97.0915  Median=98.8500  StdDev=3.9267  Variance=15.4189
+  Skewness=-1.7075  ExKurtosis=2.0701  CV%=4.04
+  Min=82.9800  P05=87.5395  P25=96.1000  P50=98.8500  P75=99.8000  P95=100.0000  Max=100.0000
+  IQR=3.7000  Range=17.0200
+  Shapiro-Wilk: W=0.7411  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=rpm
+  Variable : value
+  n=4,381  missing=0
+  Mean=1479.9624  Median=1479.9000  StdDev=5.0246  Variance=25.2464
+  Skewness=-0.0187  ExKurtosis=0.0538  CV%=0.34
+  Min=1462.5300  P05=1471.6400  P25=1476.6300  P50=1479.9000  P75=1483.3700  P95=1488.2600  Max=1498.1100
+  IQR=6.7400  Range=35.5800
+  Shapiro-Wilk: W=0.9996  p=0.656210  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=rpm
+  Variable : r_derated
+  n=4,381  missing=0
+  Mean=0.7253  Median=0.7428  StdDev=0.2000  Variance=0.0400
+  Skewness=-0.1994  ExKurtosis=-1.3104  CV%=27.57
+  Min=0.3679  P05=0.4009  P25=0.5464  P50=0.7428  P75=0.9154  P95=0.9947  Max=1.0000
+  IQR=0.3690  Range=0.6321
+  Shapiro-Wilk: W=0.9266  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=rpm
+  Variable : arrhenius_factor
+  n=4,381  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=rpm
+  Variable : health_score
+  n=4,381  missing=0
+  Mean=72.5260  Median=74.2800  StdDev=19.9986  Variance=399.9434
+  Skewness=-0.1994  ExKurtosis=-1.3104  CV%=27.57
+  Min=36.7900  P05=40.0900  P25=54.6400  P50=74.2800  P75=91.5400  P95=99.4700  Max=100.0000
+  IQR=36.9000  Range=63.2100
+  Shapiro-Wilk: W=0.9266  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=temperature
+  Variable : value
+  n=13,066  missing=0
+  Mean=86.3655  Median=75.9893  StdDev=18.6009  Variance=345.9948
+  Skewness=0.6869  ExKurtosis=-1.2532  CV%=21.54
+  Min=62.9465  P05=68.2602  P25=71.8508  P50=75.9893  P75=109.0747  P95=115.0404  Max=132.9014
+  IQR=37.2238  Range=69.9549
+  Shapiro-Wilk: W=0.7891  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: moderately right-skewed, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=temperature
+  Variable : r_derated
+  n=13,066  missing=0
+  Mean=0.9762  Median=0.9915  StdDev=0.0345  Variance=0.0012
+  Skewness=-2.0707  ExKurtosis=4.0691  CV%=3.53
+  Min=0.8186  P05=0.8942  P25=0.9679  P50=0.9915  P75=0.9986  P95=1.0000  Max=1.0000
+  IQR=0.0307  Range=0.1814
+  Shapiro-Wilk: W=0.7034  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=temperature
+  Variable : arrhenius_factor
+  n=13,066  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=temperature
+  Variable : health_score
+  n=13,066  missing=0
+  Mean=97.6156  Median=99.1500  StdDev=3.4470  Variance=11.8815
+  Skewness=-2.0706  ExKurtosis=4.0687  CV%=3.53
+  Min=81.8600  P05=89.4200  P25=96.7900  P50=99.1500  P75=99.8600  P95=100.0000  Max=100.0000
+  IQR=3.0700  Range=18.1400
+  Shapiro-Wilk: W=0.7035  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=vibration
+  Variable : value
+  n=21,822  missing=0
+  Mean=8.4366  Median=8.0580  StdDev=6.0841  Variance=37.0160
+  Skewness=0.2113  ExKurtosis=-1.3563  CV%=72.12
+  Min=0.3418  P05=0.9509  P25=1.4321  P50=8.0580  P75=16.2354  P95=17.0454  Max=19.8500
+  IQR=14.8032  Range=19.5082
+  Shapiro-Wilk: W=0.8708  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=vibration
+  Variable : r_derated
+  n=21,822  missing=0
+  Mean=0.8589  Median=0.9703  StdDev=0.2159  Variance=0.0466
+  Skewness=-1.6670  ExKurtosis=1.5966  CV%=25.14
+  Min=0.1581  P05=0.3654  P25=0.8298  P50=0.9703  P75=0.9957  P95=0.9999  Max=1.0000
+  IQR=0.1659  Range=0.8419
+  Shapiro-Wilk: W=0.6981  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=vibration
+  Variable : arrhenius_factor
+  n=21,822  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : sensor_type=vibration
+  Variable : health_score
+  n=21,822  missing=0
+  Mean=85.8874  Median=97.0300  StdDev=21.5937  Variance=466.2864
+  Skewness=-1.6670  ExKurtosis=1.5966  CV%=25.14
+  Min=15.8100  P05=36.5415  P25=82.9800  P50=97.0300  P75=99.5700  P95=99.9900  Max=100.0000
+  IQR=16.5900  Range=84.1900
+  Shapiro-Wilk: W=0.6982  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Bearing
+  Variable : value
+  n=8,730  missing=0
+  Mean=36.2000  Median=33.8466  StdDev=34.7763  Variance=1209.3902
+  Skewness=0.0099  ExKurtosis=-1.9847  CV%=96.07
+  Min=0.6508  P05=1.0264  P25=1.2431  P50=33.8466  P75=70.4992  P95=74.5041  Max=83.5367
+  IQR=69.2561  Range=82.8859
+  Shapiro-Wilk: W=0.6800  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Bearing
+  Variable : r_derated
+  n=8,730  missing=0
+  Mean=0.9764  Median=0.9921  StdDev=0.0354  Variance=0.0013
+  Skewness=-2.2908  ExKurtosis=5.3428  CV%=3.63
+  Min=0.8186  P05=0.8919  P25=0.9676  P50=0.9921  P75=0.9990  P95=1.0000  Max=1.0000
+  IQR=0.0314  Range=0.1814
+  Shapiro-Wilk: W=0.6924  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Bearing
+  Variable : arrhenius_factor
+  n=8,730  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Bearing
+  Variable : health_score
+  n=8,730  missing=0
+  Mean=97.6413  Median=99.2100  StdDev=3.5421  Variance=12.5466
+  Skewness=-2.2905  ExKurtosis=5.3418  CV%=3.63
+  Min=81.8600  P05=89.1900  P25=96.7600  P50=99.2100  P75=99.9000  P95=100.0000  Max=100.0000
+  IQR=3.1400  Range=18.1400
+  Shapiro-Wilk: W=0.6925  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Coupling
+  Variable : value
+  n=8,750  missing=0
+  Mean=44.9439  Median=45.2702  StdDev=31.6978  Variance=1004.7478
+  Skewness=-0.0320  ExKurtosis=-1.9015  CV%=70.53
+  Min=0.6854  P05=1.2927  P25=16.3357  P50=45.2702  P75=75.3500  P95=81.0255  Max=91.1600
+  IQR=59.0143  Range=90.4746
+  Shapiro-Wilk: W=0.7505  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Coupling
+  Variable : r_derated
+  n=8,750  missing=0
+  Mean=0.6424  Median=0.6748  StdDev=0.2884  Variance=0.0832
+  Skewness=-0.2226  ExKurtosis=-1.4526  CV%=44.89
+  Min=0.1581  P05=0.1902  P25=0.3660  P50=0.6748  P75=0.9380  P95=0.9962  Max=1.0000
+  IQR=0.5720  Range=0.8419
+  Shapiro-Wilk: W=0.8943  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Coupling
+  Variable : arrhenius_factor
+  n=8,750  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Coupling
+  Variable : health_score
+  n=8,750  missing=0
+  Mean=64.2409  Median=67.4800  StdDev=28.8401  Variance=831.7512
+  Skewness=-0.2226  ExKurtosis=-1.4526  CV%=44.89
+  Min=15.8100  P05=19.0190  P25=36.5975  P50=67.4800  P75=93.8050  P95=99.6200  Max=100.0000
+  IQR=57.2075  Range=84.1900
+  Shapiro-Wilk: W=0.8943  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Gearbox
+  Variable : value
+  n=13,062  missing=0
+  Mean=34.8058  Median=16.5645  StdDev=29.9172  Variance=895.0399
+  Skewness=0.6391  ExKurtosis=-1.4670  CV%=85.95
+  Min=1.1011  P05=7.3125  P25=11.6845  P50=16.5645  P75=74.0225  P95=79.0909  Max=93.0305
+  IQR=62.3381  Range=91.9294
+  Shapiro-Wilk: W=0.7414  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: moderately right-skewed, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Gearbox
+  Variable : r_derated
+  n=13,062  missing=0
+  Mean=0.9709  Median=0.9885  StdDev=0.0393  Variance=0.0015
+  Skewness=-1.7072  ExKurtosis=2.0678  CV%=4.04
+  Min=0.8298  P05=0.8752  P25=0.9610  P50=0.9885  P75=0.9980  P95=1.0000  Max=1.0000
+  IQR=0.0370  Range=0.1702
+  Shapiro-Wilk: W=0.7498  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Gearbox
+  Variable : arrhenius_factor
+  n=13,062  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Gearbox
+  Variable : health_score
+  n=13,062  missing=0
+  Mean=97.0915  Median=98.8500  StdDev=3.9264  Variance=15.4166
+  Skewness=-1.7071  ExKurtosis=2.0676  CV%=4.04
+  Min=82.9800  P05=87.5215  P25=96.1000  P50=98.8500  P75=99.8000  P95=100.0000  Max=100.0000
+  IQR=3.7000  Range=17.0200
+  Shapiro-Wilk: W=0.7498  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Motor Housing
+  Variable : value
+  n=8,694  missing=0
+  Mean=59.4184  Median=57.8043  StdDev=52.6673  Variance=2773.8394
+  Skewness=0.0082  ExKurtosis=-1.9735  CV%=88.64
+  Min=0.3418  P05=0.8546  P25=8.1626  P50=57.8043  P75=110.6947  P95=118.6922  Max=132.9014
+  IQR=102.5321  Range=132.5596
+  Shapiro-Wilk: W=0.7017  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Motor Housing
+  Variable : r_derated
+  n=8,694  missing=0
+  Mean=0.9811  Median=0.9928  StdDev=0.0267  Variance=0.0007
+  Skewness=-1.9131  ExKurtosis=2.9677  CV%=2.73
+  Min=0.8824  P05=0.9141  P25=0.9756  P50=0.9928  P75=0.9986  P95=1.0000  Max=1.0000
+  IQR=0.0231  Range=0.1176
+  Shapiro-Wilk: W=0.7091  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Motor Housing
+  Variable : arrhenius_factor
+  n=8,694  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Motor Housing
+  Variable : health_score
+  n=8,694  missing=0
+  Mean=98.1147  Median=99.2800  StdDev=2.6737  Variance=7.1488
+  Skewness=-1.9131  ExKurtosis=2.9679  CV%=2.73
+  Min=88.2400  P05=91.4100  P25=97.5600  P50=99.2800  P75=99.8600  P95=100.0000  Max=100.0000
+  IQR=2.3000  Range=11.7600
+  Shapiro-Wilk: W=0.7091  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: highly left-skewed, leptokurtic (heavy tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Shaft
+  Variable : value
+  n=8,762  missing=0
+  Mean=743.2036  Median=735.5140  StdDev=736.8120  Variance=542891.9514
+  Skewness=0.0000  ExKurtosis=-2.0003  CV%=99.14
+  Min=0.4976  P05=1.0194  P25=7.9223  P50=735.5140  P75=1479.8975  P95=1486.5000  Max=1498.1100
+  IQR=1471.9752  Range=1497.6124
+  Shapiro-Wilk: W=0.6413  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Shaft
+  Variable : r_derated
+  n=8,762  missing=0
+  Mean=0.7253  Median=0.7428  StdDev=0.2000  Variance=0.0400
+  Skewness=-0.1993  ExKurtosis=-1.3103  CV%=27.57
+  Min=0.3679  P05=0.4009  P25=0.5464  P50=0.7428  P75=0.9154  P95=0.9947  Max=1.0000
+  IQR=0.3690  Range=0.6321
+  Shapiro-Wilk: W=0.9278  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Shaft
+  Variable : arrhenius_factor
+  n=8,762  missing=0
+  Mean=1.0000  Median=1.0000  StdDev=0.0000  Variance=0.0000
+  Skewness=0.0000  ExKurtosis=0.0000  CV%=0.00
+  Min=1.0000  P05=1.0000  P25=1.0000  P50=1.0000  P75=1.0000  P95=1.0000  Max=1.0000
+  IQR=0.0000  Range=0.0000
+  Shapiro-Wilk: W=1.0000  p=1.000000  → NORMAL (p>0.05)
+  Shape: symmetric, mesokurtic (normal tails)
+
+────────────────────────────────────────────────────────────────────────
+  Group    : component=Shaft
+  Variable : health_score
+  n=8,762  missing=0
+  Mean=72.5260  Median=74.2800  StdDev=19.9974  Variance=399.8977
+  Skewness=-0.1993  ExKurtosis=-1.3103  CV%=27.57
+  Min=36.7900  P05=40.0900  P25=54.6400  P50=74.2800  P75=91.5400  P95=99.4700  Max=100.0000
+  IQR=36.9000  Range=63.2100
+  Shapiro-Wilk: W=0.9278  p=0.000000  → NON-NORMAL (p<=0.01)
+  Shape: symmetric, platykurtic (light tails)
+
+========================================================================
+PRODUCTION COUNTS — Descriptive Statistics
+========================================================================
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : total_units
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : good_units
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : defective_units
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : rework_units
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : ideal_cycle_time_min
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : first_pass_yield
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN
+
+========================================================================
+DOWNTIME DURATIONS — Descriptive Statistics
+========================================================================
+
+────────────────────────────────────────────────────────────────────────
+  Group    : FLEET_ALL
+  Variable : duration_min
+  n=0  missing=0
+  Mean=nan  Median=nan  StdDev=nan  Variance=nan
+  Skewness=nan  ExKurtosis=nan  CV%=nan
+  Min=nan  P05=nan  P25=nan  P50=nan  P75=nan  P95=nan  Max=nan
+  IQR=nan  Range=nan
+  Shapiro-Wilk: W=nan  p=nan  → INSUFFICIENT_DATA
+  Shape: UNKNOWN

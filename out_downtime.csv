@@ -1,0 +1,36 @@
+downtime_rank,component_name,maintenance_strategy,position_in_chain,downtime_event_count,total_downtime_min,unplanned_downtime_min,planned_downtime_min,cascade_downtime_min,pct_of_fleet_downtime,cumulative_pct,pareto_tier,avg_downtime_per_event_min,unplanned_pct_of_component
+1,Gearbox,PM_CBM,5,29,3460.84,691.2,240.0,2157.6,31.63,31.63,VITAL_FEW,119.34,19.97
+2,Coupling,CBM,4,28,2779.99,721.2,240.0,1436.4,25.41,57.04,VITAL_FEW,99.29,25.94
+3,"Motor Housing",CBM,3,30,2155.86,901.8,240.0,534.6,19.7,76.74,VITAL_FEW,71.86,41.83
+4,Bearing,PM,1,33,1381.11,534.6,240.0,0.0,12.62,89.36,USEFUL_MANY,41.85,38.71
+5,Shaft,CBM,2,23,1163.64,0.0,240.0,534.6,10.64,100.0,USEFUL_MANY,50.59,0.0
+cause_rank,downtime_category,event_count,total_downtime_min,affected_components,pct_of_total,cumulative_pct,pareto_tier,avg_min_per_event
+1,cascade_upstream,16,4663.2,4,42.62,42.62,VITAL_FEW,291.45
+2,unplanned_failure,9,2848.8,4,26.04,68.66,VITAL_FEW,316.53
+3,idle,108,2229.44,5,20.38,89.04,USEFUL_MANY,20.64
+4,planned_maintenance,10,1200.0,5,10.97,100.01,USEFUL_MANY,120.0
+component_id,component_name,position_in_chain,unplanned_failure_min,planned_maintenance_min,changeover_min,idle_min,cascade_upstream_min,component_total_min,pct_of_fleet_unplanned
+1,Bearing,1,534.6,240.0,0.0,606.51,0.0,1381.11,18.77
+2,Shaft,2,0.0,240.0,0.0,389.04,534.6,1163.64,0.0
+3,"Motor Housing",3,901.8,240.0,0.0,479.46,534.6,2155.86,31.66
+4,Coupling,4,721.2,240.0,0.0,382.39,1436.4,2779.99,25.32
+5,Gearbox,5,691.2,240.0,0.0,372.04,2157.6,3460.84,24.26
+failure_mode_rank,failure_mode,event_count,component_count,total_downtime_min,avg_downtime_per_event_min,min_event_min,max_event_min,pct_of_failure_downtime,cumulative_pct,pareto_tier
+1,winding_insulation_degradation,3,1,901.8,300.6,79.31,480.0,31.66,31.66,VITAL_FEW
+2,elastomer_ageing,2,1,721.2,360.6,330.56,390.64,25.32,56.98,VITAL_FEW
+3,gear_tooth_pitting,2,1,691.2,345.6,231.1,460.1,24.26,81.24,USEFUL_MANY
+4,rolling_element_fatigue,2,1,534.6,267.3,248.83,285.77,18.77,100.01,USEFUL_MANY
+shift_rank,shift_label,shift_count,downtime_event_count,total_planned_min,total_downtime_min,pct_of_fleet_downtime,avg_downtime_per_shift_min,availability_pct,cumulative_pct
+1,DAY,450,51,216480.0,4653.13,42.53,10.3403,97.85,42.53
+2,NIGHT,450,42,216000.0,3221.76,29.45,7.1595,98.51,71.98
+3,SWING,450,50,216960.0,3066.55,28.03,6.8146,98.59,100.01
+component_id,component_name,maintenance_strategy,total_downtime_min,unplanned_min,planned_min,cascade_min,idle_changeover_min,unplanned_pct,planned_pct,cascade_pct,maintenance_culture,benchmark_status
+3,"Motor Housing",CBM,2155.86,901.8,240.0,534.6,479.46,41.83,11.13,24.8,PLANNED_DOMINANT,BELOW_BENCHMARK
+4,Coupling,CBM,2779.99,721.2,240.0,1436.4,382.39,25.94,8.63,51.67,PLANNED_DOMINANT,MEETS_BENCHMARK
+5,Gearbox,PM_CBM,3460.84,691.2,240.0,2157.6,372.04,19.97,6.93,62.34,PLANNED_DOMINANT,MEETS_BENCHMARK
+1,Bearing,PM,1381.11,534.6,240.0,0.0,606.51,38.71,17.38,0.0,PLANNED_DOMINANT,BELOW_BENCHMARK
+2,Shaft,CBM,1163.64,0.0,240.0,534.6,389.04,0.0,20.62,45.94,PLANNED_DOMINANT,MEETS_BENCHMARK
+cascade_rank,root_cause_component_name,root_cause_position,cascade_events_caused,distinct_victims,total_cascade_downtime_min,avg_cascade_event_min,pct_of_fleet_cascade,cascade_multiplier
+1,Bearing,1,8,4,2138.4,267.3,45.86,4.0
+2,"Motor Housing",3,6,2,1803.6,300.6,38.68,2.0
+3,Coupling,4,2,1,721.2,360.6,15.47,1.0
